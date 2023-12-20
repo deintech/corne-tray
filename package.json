@@ -1,0 +1,40 @@
+{
+  "name": "corne-tray",
+  "version": "1.0.0",
+  "description": "corne tray indicator",
+  "type": "module",
+  "main": "build/main.js",
+  "scripts": {
+    "prestart": "npm run compile",
+    "start": "electron .",
+    "compile": "rm -rf build && tsc && cp -r src/assets build/",
+    "build:win": "electron-packager . --platform=win32 --arch=x64 --out=out",
+    "build:mac": "electron-packager . --platform=darwin --arch=x64 --out=out",
+    "lint": "eslint . --ext .js,.ts",
+    "lint:fix": "eslint . --fix --ext .js,.ts"
+  },
+  "keywords": [
+    "corne",
+    "keyboard",
+    "tray",
+    "indicator"
+  ],
+  "author": "equiman",
+  "license": "MIT",
+  "devDependencies": {
+    "@electron/packager": "18.1.3",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "electron": "28.0.0",
+    "electron-packager": "17.1.2",
+    "eslint": "^8.56.0",
+    "eslint-config-standard-with-typescript": "^43.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.4.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "typescript": "^5.3.3"
+  },
+  "swpm": "npm",
+  "dependencies": {
+    "electron-store": "8.1.0"
+  }
+}
