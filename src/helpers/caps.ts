@@ -27,6 +27,7 @@ const icons: Record<Caps, string> = {
 const reset = (tray: Tray): void => {
   const capsState = getCapsState()
   const current = capsState ? 'ON' : 'OFF'
+  store.set('caps', current)
   update(tray, current)
 }
 
@@ -58,7 +59,8 @@ export const set = (tray: Tray, key?: Caps): void => {
     update(tray, key)
     // TODO: detect key press without SHIFT to disable
     setTimeout(() => {
-      update(tray, 'OFF')
+      const caps = store.get('caps')
+      update(tray, caps)
     }, 750 * 1)
     return
   }
@@ -66,13 +68,15 @@ export const set = (tray: Tray, key?: Caps): void => {
   if (key === 'CW-OFF') {
     update(tray, key)
     setTimeout(() => {
-      update(tray, 'OFF')
+      const caps = store.get('caps')
+      update(tray, caps)
     }, 750 * 1)
     return
   }
 
   if (key === 'OFF') {
     getCapsState()
+    store.set('caps', 'OFF')
     update(tray, 'OFF')
   }
 

@@ -14,7 +14,7 @@ const schema: Schema<StoreProps> = {
   },
   caps: {
     type: 'string',
-    enum: ['ON', 'OFF', 'CW-ON', 'CW-OFF'],
+    enum: ['ON', 'OFF'],
     default: 'OFF'
   },
   os: {
