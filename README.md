@@ -1,4 +1,4 @@
-# Corne Tray
+# ZMK Tray
 
 ---
 
@@ -10,15 +10,13 @@
 
 ## About
 
-### Fork
-
-- [corne-zmk-config](https://github.com/AYM1607/corne-zmk-config) - ZMK Colemak DHm layout
-
 ### Built With
 
-- [VS Code](https://code.visualstudio.com/) - Code editing redefined.
-- [Electron](https://www.electronjs.org/) - Build cross-platform desktop apps with JavaScript, HTML, and CSS.
+- [VS Code](https://code.visualstudio.com/) - Code editing redefined
+- [Electron](https://www.electronjs.org/) - Build cross-platform desktop apps with JavaScript, HTML, and CSS
 - [Figma](https://www.figma.com/) - The collaborative interface design tool
+- [Check Caps](https://github.dev/ahkohd/check-caps) - Native node module to check if caps lock is on/off (Windows, Mac OS, Linux)
+- [Control Modifier Keys](https://github.dev/VanBerlo/control-modifier-keys) - A NodeJS module to control modifier keys (scroll, num and capslock) on a windows device
 
 ### Typing
 

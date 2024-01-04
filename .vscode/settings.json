@@ -1,14 +1,16 @@
 {
     "cSpell.words": [
+        "capslock",
         "Capslock",
-        "Colemak",
-        "corne",
         "fullscreenable",
         "minimizable",
         "Monkeytype",
+        "Napi",
+        "NUMLOCK",
         "paypal",
         "prestart",
-        "swpm"
+        "swpm",
+        "zmk"
     ],
     "files.exclude": {
         "**/*.js.map": {

@@ -1,9 +1,11 @@
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { Tray, globalShortcut } from 'electron/main'
+// import { Tray, globalShortcut } from 'electron/main'
+import { Tray } from 'electron/main'
 import { nativeImage, type App } from 'electron'
 import type { Caps } from './caps.types.js'
 import { exitMenu } from './menu.js'
+import { getCapsState } from './modifier.js'
 
 const pathIconOff = path.join(fileURLToPath(import.meta.url), '../..', '/assets/icons/caps/OFF.png')
 const iconImageOff = nativeImage.createFromPath(pathIconOff)
@@ -15,67 +17,67 @@ const icons: Record<Caps, string> = {
   'CW-OFF': 'Caps Word: OFF'
 }
 
-type CapsProps = {
-  state: boolean
-  words: string[]
-}
+// type CapsProps = {
+//   state: boolean
+//   words: string[]
+// }
 
-const caps: CapsProps = {
-  state: false,
-  words: [
-    'a',
-    'b',
-    'c',
-    'd',
-    'e',
-    'f',
-    'g',
-    'h',
-    'i',
-    'j',
-    'k',
-    'l',
-    'm',
-    'n',
-    'o',
-    'p',
-    'q',
-    'r',
-    's',
-    't',
-    'u',
-    'v',
-    'w',
-    'x',
-    'y',
-    'z',
-    ')', '!', '@', '#', '$', '%', '^', '&', '*', '(', ':', ';', ':', 'Plus', '=', '<', ',', '_', '-', '>', '.', '?', '/', '~', '`', '{', ']', '[', '|', '\\', '}', '"', "'",
-    '0', 'Num0',
-    '1', 'Num1',
-    '2', 'Num2',
-    '3', 'Num3',
-    '4', 'Num4',
-    '5', 'Num5',
-    '6', 'Num6',
-    '7', 'Num7',
-    '8', 'Num8',
-    '9', 'Num9',
-    'Backspace',
-    'Delete',
-    'Space',
-    'Tab',
-    'Return',
-    'Up',
-    'Down',
-    'Left',
-    'Right',
-    'Home',
-    'End',
-    'PageUp',
-    'PageDown',
-    'Esc'
-  ]
-}
+// const caps: CapsProps = {
+//   state: false,
+//   words: [
+//     'a',
+//     'b',
+//     'c',
+//     'd',
+//     'e',
+//     'f',
+//     'g',
+//     'h',
+//     'i',
+//     'j',
+//     'k',
+//     'l',
+//     'm',
+//     'n',
+//     'o',
+//     'p',
+//     'q',
+//     'r',
+//     's',
+//     't',
+//     'u',
+//     'v',
+//     'w',
+//     'x',
+//     'y',
+//     'z',
+//     ')', '!', '@', '#', '$', '%', '^', '&', '*', '(', ':', ';', ':', 'Plus', '=', '<', ',', '_', '-', '>', '.', '?', '/', '~', '`', '{', ']', '[', '|', '\\', '}', '"', "'",
+//     '0', 'Num0',
+//     '1', 'Num1',
+//     '2', 'Num2',
+//     '3', 'Num3',
+//     '4', 'Num4',
+//     '5', 'Num5',
+//     '6', 'Num6',
+//     '7', 'Num7',
+//     '8', 'Num8',
+//     '9', 'Num9',
+//     'Backspace',
+//     'Delete',
+//     'Space',
+//     'Tab',
+//     'Return',
+//     'Up',
+//     'Down',
+//     'Left',
+//     'Right',
+//     'Home',
+//     'End',
+//     'PageUp',
+//     'PageDown',
+//     'Esc'
+//   ]
+// }
 
 const reset = (tray: Tray): void => {
   tray.setImage(iconImageOff)
@@ -102,33 +104,36 @@ export const create = (app: App): Tray => {
   return tray
 }
 
-const unregisterCapsWords = (): void => {
-  caps.words.forEach((key) => {
-    if (globalShortcut.isRegistered(key)) {
-      globalShortcut.unregister(`${key}`)
-    }
-  })
-}
+// const unregisterCapsWords = (): void => {
+//   caps.words.forEach((key) => {
+//     if (globalShortcut.isRegistered(key)) {
+//       globalShortcut.unregister(`${key}`)
+//     }
+//   })
+// }
 
-const registerCapsWords = (tray: Tray): void => {
-  caps.words.forEach((key) => {
-    globalShortcut.register(`${key}`, () => {
-      unregisterCapsWords()
-      reset(tray)
-    })
-  })
-}
+// const registerCapsWords = (tray: Tray): void => {
+//   caps.words.forEach((key) => {
+//     globalShortcut.register(`${key}`, () => {
+//       unregisterCapsWords()
+//       reset(tray)
+//     })
+//   })
+// }
 
 export const set = (tray: Tray, key?: Caps): void => {
   if (key === 'CW-ON') {
     update(tray, key)
-    registerCapsWords(tray)
+    // registerCapsWords(tray)
+    setTimeout(() => {
+      reset(tray)
+    }, 750 * 1)
     return
   }
 
   if (key === 'CW-OFF') {
     update(tray, key)
-    unregisterCapsWords()
+    // unregisterCapsWords()
     setTimeout(() => {
       reset(tray)
     }, 750 * 1)
@@ -136,9 +141,10 @@ export const set = (tray: Tray, key?: Caps): void => {
   }
 
   if (key === null || key === undefined) {
-    const state = caps.state
-    const current = !state ? 'ON' : 'OFF'
-    caps.state = !state
+    const capsState = getCapsState()
+    console.log({ capsState })
+    const current = capsState ? 'ON' : 'OFF'
+    // caps.state = caps
     update(tray, current)
   }
 }
