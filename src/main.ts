@@ -4,6 +4,7 @@ import { create as createLayerTray, set as setLayerTray } from './helpers/layers
 import { getStore } from './helpers/store.js'
 import { detectOs } from './helpers/os.js'
 import { openHelp } from './helpers/help.js'
+import { detectTheme } from './helpers/theme.js'
 
 const store = getStore()
 
@@ -13,6 +14,9 @@ let layerTray: Tray
 app.whenReady().then(() => {
   const os = detectOs()
   store.set('os', os)
+
+  const theme = detectTheme()
+  store.set('theme', theme)
 
   // Caps keyboard shortcuts
   capsTray = createCapsTray(app)

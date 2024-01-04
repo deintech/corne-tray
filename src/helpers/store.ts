@@ -7,6 +7,11 @@ const schema: Schema<StoreProps> = {
     enum: ['KBD', 'BAS', 'DEV', 'AXN', 'FNK', 'STG'],
     default: 'KBD'
   },
+  theme: {
+    type: 'string',
+    enum: ['light', 'dark'],
+    default: 'dark'
+  },
   caps: {
     type: 'string',
     enum: ['ON', 'OFF', 'CW-ON', 'CW-OFF'],
