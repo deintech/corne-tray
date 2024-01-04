@@ -58,7 +58,7 @@ export const set = (tray: Tray, key?: Caps): void => {
     update(tray, key)
     // TODO: detect key press without SHIFT to disable
     setTimeout(() => {
-      reset(tray)
+      update(tray, 'OFF')
     }, 750 * 1)
     return
   }
@@ -66,7 +66,7 @@ export const set = (tray: Tray, key?: Caps): void => {
   if (key === 'CW-OFF') {
     update(tray, key)
     setTimeout(() => {
-      reset(tray)
+      update(tray, 'OFF')
     }, 750 * 1)
     return
   }
