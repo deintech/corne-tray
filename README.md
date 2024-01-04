@@ -17,6 +17,7 @@
 - [Figma](https://www.figma.com/) - The collaborative interface design tool
 - [Check Caps](https://github.dev/ahkohd/check-caps) - Native node module to check if caps lock is on/off (Windows, Mac OS, Linux)
 - [Control Modifier Keys](https://github.dev/VanBerlo/control-modifier-keys) - A NodeJS module to control modifier keys (scroll, num and capslock) on a windows device
+- [Flaticon](https://www.flaticon.com/free-icon/letter-z_12810559) - Letter Z icon
 
 ### Typing
 
