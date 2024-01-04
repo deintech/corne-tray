@@ -61,7 +61,6 @@ export const set = (tray: Tray, key?: Caps): void => {
 
   if (key === null || key === undefined) {
     const capsState = getCapsState()
-    console.log({ capsState })
     const current = capsState ? 'ON' : 'OFF'
     update(tray, current)
   }
