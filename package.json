@@ -11,9 +11,9 @@
     "prestart": "npm run build",
     "start": "electron .",
     "precompile:win": "npm run build",
-    "compile:win": "electron-packager . --platform=win32 --arch=x64 --out=out --overwrite",
+    "compile:win": "electron-packager . --platform=win32 --arch=x64 --out=out --overwrite --icon=src/assets/icons/app/zmk-tray.ico",
     "precompile:mac": "npm run build",
-    "compile:mac": "electron-packager . --platform=darwin --arch=x64 --out=out --overwrite",
+    "compile:mac": "electron-packager . --platform=darwin --arch=x64 --out=out --overwrite --icon=src/assets/icons/app/zmk-tray.icns",
     "lint": "eslint . --ext .js,.ts",
     "lint:fix": "eslint . --fix --ext .js,.ts"
   },
@@ -28,7 +28,7 @@
   "devDependencies": {
     "@electron/packager": "18.1.3",
     "@typescript-eslint/eslint-plugin": "6.17.0",
-    "electron": "28.1.0",
+    "electron": "28.1.1",
     "electron-packager": "17.1.2",
     "eslint": "8.56.0",
     "eslint-config-standard-with-typescript": "43.0.0",

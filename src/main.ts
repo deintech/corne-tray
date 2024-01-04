@@ -16,6 +16,7 @@ app.whenReady().then(() => {
 
   // Caps keyboard shortcuts
   capsTray = createCapsTray(app)
+  setCapsTray(capsTray, 'OFF')
 
   globalShortcut.register('F18', () => {
     setCapsTray(capsTray)
