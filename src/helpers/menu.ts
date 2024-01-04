@@ -1,9 +1,14 @@
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { Menu, nativeImage, type App } from 'electron'
+import { getStore } from './store.js'
+
+const store = getStore()
 
 export const exitMenu = (app: App) => {
-  const exitPath = path.join(fileURLToPath(import.meta.url), '../..', '/assets/icons/menu/quit.png')
+  const theme = store.get('theme')
+
+  const exitPath = path.join(fileURLToPath(import.meta.url), '../..', `/assets/icons/menu/${theme}/quit.png`)
   const exitIcon = nativeImage.createFromPath(exitPath)
 
   const menu = Menu.buildFromTemplate([

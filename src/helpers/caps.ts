@@ -25,14 +25,16 @@ const icons: Record<Caps, string> = {
 }
 
 const reset = (tray: Tray): void => {
-  const iconImageOff = getOffIcon()
-  tray.setImage(iconImageOff)
-  tray.setToolTip(icons.OFF)
+  const capsState = getCapsState()
+  const current = capsState ? 'ON' : 'OFF'
+  update(tray, current)
 }
 
 const update = (tray: Tray, key: Caps): void => {
   try {
-    const iconPath = path.join(fileURLToPath(import.meta.url), '../..', `/assets/icons/caps/${key}.png`)
+    const theme = store.get('theme')
+
+    const iconPath = path.join(fileURLToPath(import.meta.url), '../..', `/assets/icons/caps/${theme}/${key}.png`)
     const iconImage = nativeImage.createFromPath(iconPath)
     tray.setImage(iconImage)
     tray.setToolTip(icons[key])
@@ -75,8 +77,6 @@ export const set = (tray: Tray, key?: Caps): void => {
   }
 
   if (key === null || key === undefined) {
-    const capsState = getCapsState()
-    const current = capsState ? 'ON' : 'OFF'
-    update(tray, current)
+    reset(tray)
   }
 }
