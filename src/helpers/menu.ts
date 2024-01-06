@@ -1,6 +1,7 @@
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { Menu, nativeImage, type App } from 'electron'
+import { Menu, nativeImage } from 'electron'
+import { type App } from 'electron/main'
 import { getStore } from './store.js'
 
 const store = getStore()

@@ -3,9 +3,9 @@ import { fileURLToPath } from 'node:url'
 import { Tray } from 'electron/main'
 import { nativeImage, type App, type NativeImage } from 'electron'
 import type { Caps } from './caps.types.js'
-import { exitMenu } from './menu.js'
-import { getCapsState } from './modifier.js'
-import { getStore } from './store.js'
+import { exitMenu } from '../helpers/menu.js'
+import { getCapsState } from '../helpers/modifier.js'
+import { getStore } from '../helpers/store.js'
 
 const store = getStore()
 
