@@ -132,3 +132,8 @@ dist
 # Typescript
 build/
 out/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
