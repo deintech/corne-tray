@@ -2,7 +2,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import { shell } from 'electron'
-import { spawnSync } from 'node:child_process'
+import { spawn } from 'node:child_process'
 
 import { getStore } from './store.js'
 
@@ -22,7 +22,7 @@ export const openHelp = async (): Promise<void> => {
 
     if (os === 'macos') {
       // Open with Quick Look
-      spawnSync('qlmanage', ['-p', `"${helpPath}"`, '2>&1'], { stdio: 'inherit', shell: true })
+      spawn('qlmanage', ['-p', `"${helpPath}"`, '2>&1'], { stdio: 'inherit', detached: true, shell: true })
     } else {
       // Open with Default app
       await shell.openPath(helpPath)
