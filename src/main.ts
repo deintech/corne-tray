@@ -16,64 +16,70 @@ app.whenReady().then(() => {
   const os = detectOs()
   store.set('os', os)
 
-  const theme = detectTheme()
+  let theme = 'light'
+  if (os !== 'macos'){
+    theme = detectTheme()
+  }
   store.set('theme', theme)
+
+  // Hide dock icon
+  app.dock.hide()
 
   // Caps keyboard shortcuts
   capsTray = createCapsTray(app)
   setCapsTray(capsTray, 'OFF')
 
-  globalShortcut.register('F18', () => {
+  globalShortcut.register('Shift+F13', () => {
     setCapsTray(capsTray)
   })
 
-  globalShortcut.register('Shift+F18', () => {
+  globalShortcut.register('Alt+F13', () => {
     setCapsTray(capsTray, 'CW-ON')
   })
 
-  globalShortcut.register('Shift+Ctrl+F18', () => {
+  globalShortcut.register('Shift+Ctrl+F13', () => {
     setCapsTray(capsTray, 'CW-OFF')
   })
 
   // Layer keyboard shortcuts
   layerTray = createLayerTray(app)
 
-  globalShortcut.register('Shift+F19', () => {
+  globalShortcut.register('Shift+F14', () => {
     store.set('layer', 'BAS')
     setLayerTray(layerTray, 'BAS')
   })
 
-  globalShortcut.register('Shift+F20', () => {
+  globalShortcut.register('Shift+F15', () => {
     store.set('layer', 'DEV')
     setLayerTray(layerTray, 'DEV')
   })
 
-  globalShortcut.register('Shift+F21', () => {
+  globalShortcut.register('Shift+F16', () => {
     store.set('layer', 'AXN')
     setLayerTray(layerTray, 'AXN')
   })
 
-  globalShortcut.register('Shift+F22', () => {
+  globalShortcut.register('Shift+F17', () => {
     store.set('layer', 'FNK')
     setLayerTray(layerTray, 'FNK')
   })
 
-  globalShortcut.register('Shift+F23', () => {
+  globalShortcut.register('Shift+F18', () => {
     store.set('layer', 'STG')
     setLayerTray(layerTray, 'STG')
   })
 
   // Help keyboard shortcut
   const helpAccelerators = [
-    'Ctrl+Alt+Shift+F19',
-    'Ctrl+Alt+Shift+F20',
-    'Ctrl+Alt+Shift+F21',
-    'Ctrl+Alt+Shift+F22',
-    'Ctrl+Alt+Shift+F23'
+    'Shift+Ctrl+F14',
+    'Shift+Ctrl+F15',
+    'Shift+Ctrl+F16',
+    'Shift+Ctrl+F17',
+    'Shift+Ctrl+F18'
   ]
   globalShortcut.registerAll(
     helpAccelerators,
-    async (): Promise<void> => await openHelp()
+    async (): Promise<void> => await openHelp(),
   )
 }).catch(error => { console.error('Error: ', error) })
 
