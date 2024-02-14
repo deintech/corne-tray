@@ -4,7 +4,6 @@ import { Tray } from 'electron/main'
 import { nativeImage, type App, type NativeImage } from 'electron'
 import type { Caps } from './caps.types.js'
 import { exitMenu } from '../helpers/menu.js'
-import { getCapsState } from '../helpers/modifier.js'
 import { getStore } from '../helpers/store.js'
 
 const store = getStore()
@@ -25,8 +24,7 @@ const icons: Record<Caps, string> = {
 }
 
 const reset = (tray: Tray): void => {
-  const capsState = getCapsState()
-  const current = capsState ? 'ON' : 'OFF'
+  const current = 'OFF'
   store.set('caps', current)
   update(tray, current)
 }
@@ -55,11 +53,11 @@ export const create = (app: App): Tray => {
 }
 
 export const set = (tray: Tray, key?: Caps): void => {
+  const caps = store.get('caps')
+
   if (key === 'CW-ON') {
     update(tray, key)
-    // TODO: detect key press without SHIFT to disable
     setTimeout(() => {
-      const caps = store.get('caps')
       update(tray, caps)
     }, 750 * 1)
     return
@@ -68,19 +66,19 @@ export const set = (tray: Tray, key?: Caps): void => {
   if (key === 'CW-OFF') {
     update(tray, key)
     setTimeout(() => {
-      const caps = store.get('caps')
       update(tray, caps)
     }, 750 * 1)
     return
   }
 
   if (key === 'OFF') {
-    getCapsState()
-    store.set('caps', 'OFF')
-    update(tray, 'OFF')
+    reset(tray)
   }
 
+  // Toogle caps state
   if (key === null || key === undefined) {
-    reset(tray)
+    const current = caps === 'ON' ? 'OFF' : 'ON'
+    store.set('caps', current)
+    update(tray, current)
   }
 }
