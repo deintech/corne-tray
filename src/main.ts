@@ -17,9 +17,7 @@ app.whenReady().then(() => {
   store.set('os', os)
 
   let theme = 'light'
-  if (os !== 'macos'){
-    theme = detectTheme()
-  }
+  theme = detectTheme()
   store.set('theme', theme)
 
   // Hide dock icon
@@ -79,7 +77,7 @@ app.whenReady().then(() => {
   ]
   globalShortcut.registerAll(
     helpAccelerators,
-    async (): Promise<void> => await openHelp(),
+    async (): Promise<void> => await openHelp()
   )
 }).catch(error => { console.error('Error: ', error) })
 
