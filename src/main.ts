@@ -69,11 +69,11 @@ app.whenReady().then(() => {
 
   // Help keyboard shortcut
   const helpAccelerators = [
-    'Super+Alt+Shift+F14',
-    'Super+Alt+Shift+F15',
-    'Super+Alt+Shift+F16',
-    'Super+Alt+Shift+F17',
-    'Super+Alt+Shift+F18'
+    'Shift+Super+Control+F14',
+    'Shift+Super+Control+F15',
+    'Shift+Super+Control+F16',
+    'Shift+Super+Control+F17',
+    'Shift+Super+Control+F18'
   ]
   globalShortcut.registerAll(
     helpAccelerators,
