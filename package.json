@@ -12,8 +12,8 @@
     "precompile": "npm run build",
     "compile:win": "electron-packager . --platform=win32 --arch=x64 --out=out --overwrite --icon=src/assets/icons/app/zmk-tray.ico",
     "compile:mac": "electron-packager . --platform=darwin --arch=x64 --out=out --overwrite --icon=src/assets/icons/app/zmk-tray.icns",
-    "lint": "eslint . --ext .js,.ts",
-    "lint:fix": "eslint . --fix --ext .js,.ts"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "keywords": [
     "zmk",
@@ -29,9 +29,12 @@
   },
   "devDependencies": {
     "@electron/packager": "18.3.6",
+    "@eslint/js": "9.17.0",
     "electron": "33.2.1",
     "electron-packager": "17.1.2",
-    "typescript": "^5.7.2"
+    "eslint": "9.17.0",
+    "typescript": "5.7.2",
+    "typescript-eslint": "8.19.0"
   },
   "swpm": "npm"
 }

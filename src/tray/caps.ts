@@ -37,7 +37,7 @@ const update = (tray: Tray, key: Caps): void => {
     const iconImage = nativeImage.createFromPath(iconPath)
     tray.setImage(iconImage)
     tray.setToolTip(icons[key])
-  } catch (error) {
+  } catch {
     reset(tray)
   }
 }

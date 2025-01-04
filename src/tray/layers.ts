@@ -30,7 +30,7 @@ export const set = (tray: Tray, key: Layers): void => {
     const iconImage = nativeImage.createFromPath(iconPath)
     tray.setImage(iconImage)
     tray.setToolTip(`${key} Layer`)
-  } catch (error) {
+  } catch {
     reset(tray)
   }
 }
