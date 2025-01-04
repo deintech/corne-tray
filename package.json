@@ -23,21 +23,15 @@
   ],
   "author": "equiman",
   "license": "MIT",
-  "devDependencies": {
-    "@electron/packager": "18.1.3",
-    "@typescript-eslint/eslint-plugin": "7.0.1",
-    "electron": "28.2.2",
-    "electron-packager": "17.1.2",
-    "eslint": "8.56.0",
-    "eslint-config-standard-with-typescript": "43.0.1",
-    "eslint-plugin-import": "2.29.1",
-    "eslint-plugin-n": "16.6.2",
-    "eslint-plugin-promise": "6.1.1",
-    "typescript": "5.3.3"
-  },
-  "swpm": "npm",
   "dependencies": {
-    "electron-store": "8.1.0",
-    "node-addon-api": "7.1.0"
-  }
+    "electron-store": "10.0.0",
+    "node-addon-api": "8.3.0"
+  },
+  "devDependencies": {
+    "@electron/packager": "18.3.6",
+    "electron": "33.2.1",
+    "electron-packager": "17.1.2",
+    "typescript": "^5.7.2"
+  },
+  "swpm": "npm"
 }
